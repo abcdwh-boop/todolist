@@ -49,71 +49,79 @@ export default function StudentSignup({ onSignupSuccess, switchToTeacherLogin })
 
   return (
     <div className="auth-card">
-      <h2 className="auth-title">학생 회원가입</h2>
-      <p className="auth-subtitle">새로운 학생 계정을 생성하고 개인 할 일 목록을 관리하세요.</p>
-      
-      {error && (
-        <div className="alert-banner error">
-          <AlertCircle size={18} />
-          <span>{error}</span>
-        </div>
-      )}
-      
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label className="form-label" htmlFor="student-email">학생 이메일</label>
-          <input
-            id="student-email"
-            type="email"
-            className="form-input"
-            placeholder="student@school.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            disabled={loading}
-          />
-        </div>
+      <div className="section-label-bar">
+        <span>≡ STUDENT REGISTER</span>
+        <span className="mascot-icon">📝</span>
+      </div>
+      <div className="auth-card-content">
+        <h2 className="auth-title">STUDENT PORTAL</h2>
+        <p className="auth-subtitle">CREATE AN ACCOUNT & START TRACKING TASKS</p>
         
-        <div className="form-group">
-          <label className="form-label" htmlFor="student-password">비밀번호 (6자 이상)</label>
-          <input
-            id="student-password"
-            type="password"
-            className="form-input"
-            placeholder="••••••••"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            disabled={loading}
-          />
-        </div>
+        {error && (
+          <div className="alert-banner error">
+            <AlertCircle size={12} />
+            <span>{error}</span>
+          </div>
+        )}
+        
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label className="form-label" htmlFor="student-email">STUDENT EMAIL</label>
+            <input
+              id="student-email"
+              type="email"
+              className="form-input"
+              placeholder="student@school.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={loading}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label className="form-label" htmlFor="student-password">PASSWORD (6+ CHARS)</label>
+            <input
+              id="student-password"
+              type="password"
+              className="form-input"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              disabled={loading}
+            />
+          </div>
 
-        <div className="form-group">
-          <label className="form-label" htmlFor="student-confirm-password">비밀번호 확인</label>
-          <input
-            id="student-confirm-password"
-            type="password"
-            className="form-input"
-            placeholder="••••••••"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            disabled={loading}
-          />
-        </div>
+          <div className="form-group">
+            <label className="form-label" htmlFor="student-confirm-password">CONFIRM PASSWORD</label>
+            <input
+              id="student-confirm-password"
+              type="password"
+              className="form-input"
+              placeholder="••••••••"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              disabled={loading}
+            />
+          </div>
+
+          <hr className="dotted-divider" />
+          
+          <button type="submit" className="btn btn-submit" disabled={loading}>
+            {loading ? (
+              <div className="spinner"></div>
+            ) : (
+              <>
+                <UserPlus size={12} />
+                REGISTER
+              </>
+            )}
+          </button>
+        </form>
         
-        <button type="submit" className="btn btn-primary" disabled={loading}>
-          {loading ? (
-            <div className="spinner" style={{ borderColor: 'rgba(255,255,255,0.1)', borderTopColor: '#fff' }}></div>
-          ) : (
-            <>
-              <UserPlus size={18} />
-              회원가입
-            </>
-          )}
-        </button>
-      </form>
-      
-      <p className="auth-toggle-link">
-        교사이신가요? <span onClick={switchToTeacherLogin}>교사 로그인하기</span>
-      </p>
+        <p className="auth-toggle-link">
+          TEACHER? <span onClick={switchToTeacherLogin}>LOG IN HERE</span>
+        </p>
+      </div>
     </div>
   );
 }

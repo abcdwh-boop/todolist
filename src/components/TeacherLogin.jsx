@@ -36,58 +36,66 @@ export default function TeacherLogin({ onLoginSuccess, switchToStudentSignup }) 
 
   return (
     <div className="auth-card">
-      <h2 className="auth-title">교사 로그인</h2>
-      <p className="auth-subtitle">등록된 교사 계정으로 로그인하여 할 일 목록을 관리하세요.</p>
-      
-      {error && (
-        <div className="alert-banner error">
-          <AlertCircle size={18} />
-          <span>{error}</span>
-        </div>
-      )}
-      
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label className="form-label" htmlFor="teacher-email">교사 이메일</label>
-          <input
-            id="teacher-email"
-            type="email"
-            className="form-input"
-            placeholder="teacher@school.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            disabled={loading}
-          />
-        </div>
+      <div className="section-label-bar">
+        <span>≡ TEACHER LOG IN</span>
+        <span className="mascot-icon">🔑</span>
+      </div>
+      <div className="auth-card-content">
+        <h2 className="auth-title">TEACHER PORTAL</h2>
+        <p className="auth-subtitle">ACCESS THE SCHOLASTIC DATABASE SYSTEM</p>
         
-        <div className="form-group">
-          <label className="form-label" htmlFor="teacher-password">비밀번호</label>
-          <input
-            id="teacher-password"
-            type="password"
-            className="form-input"
-            placeholder="••••••••"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            disabled={loading}
-          />
-        </div>
+        {error && (
+          <div className="alert-banner error">
+            <AlertCircle size={12} />
+            <span>{error}</span>
+          </div>
+        )}
         
-        <button type="submit" className="btn btn-primary" disabled={loading}>
-          {loading ? (
-            <div className="spinner" style={{ borderColor: 'rgba(255,255,255,0.1)', borderTopColor: '#fff' }}></div>
-          ) : (
-            <>
-              <LogIn size={18} />
-              로그인
-            </>
-          )}
-        </button>
-      </form>
-      
-      <p className="auth-toggle-link">
-        학생이신가요? <span onClick={switchToStudentSignup}>학생 회원가입하기</span>
-      </p>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label className="form-label" htmlFor="teacher-email">TEACHER EMAIL</label>
+            <input
+              id="teacher-email"
+              type="email"
+              className="form-input"
+              placeholder="teacher@school.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={loading}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label className="form-label" htmlFor="teacher-password">PASSWORD</label>
+            <input
+              id="teacher-password"
+              type="password"
+              className="form-input"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              disabled={loading}
+            />
+          </div>
+
+          <hr className="dotted-divider" />
+          
+          <button type="submit" className="btn btn-submit" disabled={loading}>
+            {loading ? (
+              <div className="spinner"></div>
+            ) : (
+              <>
+                <LogIn size={12} />
+                LOG IN
+              </>
+            )}
+          </button>
+        </form>
+        
+        <p className="auth-toggle-link">
+          STUDENT? <span onClick={switchToStudentSignup}>REGISTER HERE</span>
+        </p>
+      </div>
     </div>
   );
 }
